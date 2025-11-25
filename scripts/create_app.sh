@@ -13,8 +13,19 @@ mkdir -p "$APP_DIR/Contents/Resources"
 # Launcher script
 cat > "$APP_DIR/Contents/MacOS/nvim-qt-launcher" << 'EOF'
 #!/bin/bash
-exec /usr/local/bin/nvim-qt "$@"
+
+for path in /usr/local/bin/nvim-qt /opt/homebrew/bin/nvim-qt; do
+  if [ -x "$path" ]; then
+    exec "$path" "$@"
+    exit 0
+  fi
+done
+
+echo "Error: nvim-qt executable not found in /usr/local/bin or /opt/homebrew/bin."
+echo "Please install nvim-qt or edit the launcher script to point to the correct location."
+exit 1
 EOF
+
 chmod +x "$APP_DIR/Contents/MacOS/nvim-qt-launcher"
 
 # Info.plist
