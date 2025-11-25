@@ -49,7 +49,7 @@ Get NeoMacVim up and running in just a few steps.
 
 3. Move the app to your Applications folder:
    ```bash
-   mv ../NeoMacVim.app ~/Applications/
+   mv NeoMacVim.app ~/Applications/
    ```
 
 4. Open NeoMacVim from Spotlight, Dock, Alfred, Raycast, or Finder.
